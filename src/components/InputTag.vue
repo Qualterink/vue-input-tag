@@ -39,7 +39,7 @@ export default {
       this.tagList = this.tagList.filter((item, listKey) => listKey !== key)
     },
     addTag () {
-      if (this.inputValue.trim().length >= this.minLength) {
+      if (this.inputValue.trim().length >= this.minLength && !this.tagList.find(item => item === this.inputValue.trim())) {
         this.tagList.push(this.inputValue.trim().toString())
         this.inputValue = ''
       }
