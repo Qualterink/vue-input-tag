@@ -12,7 +12,7 @@
       <input 
       class="input-tag"
       type="text"
-      placeholder="Add tag">
+      :placeholder="placeholder">
     </li>
   </ul>
 </template>
@@ -20,6 +20,9 @@
 <script>
 export default {
   name: 'InputTag',
+  props: {
+    placeholder: { required: false, default: 'Add tag', type: String }
+  },
   data () {
     return {
       tagList: ['lorem', 'lorem ipsum', 'lorem ipsum dolor?', 'lorem']

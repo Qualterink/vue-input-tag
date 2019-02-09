@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <InputTag />
+    <InputTag 
+      :placeholder="placeholder"/>
   </div>
 </template>
 
@@ -8,7 +9,12 @@
 import InputTag from './components/InputTag'
 export default {
   name: 'app',
-  components: { InputTag }
+  components: { InputTag },
+  data () {
+    return {
+      placeholder: "Add tag"
+    }
+  }
 }
 </script>
 
