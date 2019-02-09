@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <InputTag
-      
+      :min-length="minLength"
       :placeholder="placeholder"/>
   </div>
 </template>
