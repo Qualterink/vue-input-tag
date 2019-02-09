@@ -12,9 +12,10 @@
       <li class="item">
         <input 
           class="input-tag"
-          :class="[maxQuantityTags === tagList.length ? 'disabled' : '']"
           type="text"
           title="Add tag"
+          :class="[maxQuantityTags === tagList.length ? 'disabled' : '']"
+          :disabled="maxQuantityTags === tagList.length"
           :maxlength="maxLength"
           :placeholder="placeholder"
           v-model="inputValue"
