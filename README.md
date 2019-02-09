@@ -1,5 +1,5 @@
 # input-tag
-[[https://github.com/damianidczak/vue-input-tag/blob/develop/demo.png|alt=input-tag]]
+
 ## Use
 ```
 <InputTag
