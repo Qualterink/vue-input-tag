@@ -10,9 +10,13 @@
     </li>
     <li class="item">
       <input 
-      class="input-tag"
-      type="text"
-      :placeholder="placeholder">
+        class="input-tag"
+        type="text"
+        title="Add tag"
+        :placeholder="placeholder"
+        v-model="inputValue"
+        @keyup.enter="addTag">
+      <span class="visuallyhidden">Add new tag</span>
     </li>
   </ul>
 </template>
@@ -21,16 +25,24 @@
 export default {
   name: 'InputTag',
   props: {
-    placeholder: { required: false, default: 'Add tag', type: String }
+    placeholder: { required: false, default: 'Add tag', type: String },
+    minLength: { required: false, default: 1, type: Number }
   },
   data () {
     return {
-      tagList: ['lorem', 'lorem ipsum', 'lorem ipsum dolor?', 'lorem']
+      tagList: ['lorem', 'lorem ipsum', 'lorem ipsum dolor?'],
+      inputValue: ''
     }
   },
   methods: {
     deleteTag (key) {
       this.tagList = this.tagList.filter((item, listKey) => listKey !== key)
+    },
+    addTag () {
+      if (this.inputValue.trim().length >= this.minLength) {
+        this.tagList.push(this.inputValue.trim().toString())
+        this.inputValue = ''
+      }
     }
   }
 }
@@ -116,10 +128,13 @@ export default {
   transform: rotate(-45deg);
 }
 .input-tag {
-  border:none;
+  border:1px solid transparent;
   border-bottom:1px solid #333;
   padding:.25rem .5rem;
   font-size:1.2rem;
   font-weight: 300;
+}
+.input-tag:focus {
+  border:1px solid #333;
 }
 </style>
