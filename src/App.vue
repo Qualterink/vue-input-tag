@@ -1,6 +1,14 @@
 <template>
   <div id="app">
     <h1>Vue input tag</h1>
+    <h2>Options</h2>
+    <ul class="option">
+      <li class="option-item">Placeholder: {{ placeholder }}</li>
+      <li class="option-item">Min length tag: {{ minLength }}</li>
+      <li class="option-item">Max length tag: {{ maxLength }}</li>
+      <li class="option-item">Show notyfication: {{ showNotyfication }}</li>
+      <li class="option-item">Quantity tags: {{ maxQuantityTags }}</li>
+    </ul>
     <InputTag
       class="input-tag-component"
       :min-length="minLength"
@@ -38,18 +46,25 @@ html {
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
 }
-h1 {
-  margin-top:3rem;
-}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding:3rem;
+}
+h2 {
+  margin-top:2rem;
+  text-align: left;
+}
+.option {
+  text-align: left;
+  list-style-type: none;
+}
+.option-item {
+  margin:.625rem;
 }
 .input-tag-component {
   margin-top:3rem;
-  width:80%;
-  margin-left:10%;
 }
 </style>
