@@ -2,6 +2,7 @@
   <div id="app">
     <InputTag
       :min-length="minLength"
+      :max-length="maxLength"
       :max-quantity-tags="maxQuantityTags"
       :show-notyfication="showNotyfication"
       :placeholder="placeholder"/>
@@ -17,8 +18,9 @@ export default {
     return {
       placeholder: "Add tag",
       minLength: 1,
+      maxLength: 50,
       showNotyfication: true,
-      maxQuantityTags: 2
+      maxQuantityTags: 15
     }
   }
 }

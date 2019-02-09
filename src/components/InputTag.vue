@@ -15,6 +15,7 @@
           :class="[maxQuantityTags === tagList.length ? 'disabled' : '']"
           type="text"
           title="Add tag"
+          :maxlength="maxLength"
           :placeholder="placeholder"
           v-model="inputValue"
           @keyup.enter="addTag"
@@ -37,6 +38,7 @@ export default {
   props: {
     placeholder: { required: false, default: 'Add tag', type: String },
     minLength: { required: false, default: 1, type: Number },
+    maxLength: { required: false, default: 50, type: Number },
     showNotyfication: { required:false, default: true, type: Boolean },
     maxQuantityTags: { required:false, default: 15, type: Number },
   },
@@ -56,7 +58,7 @@ export default {
         if (!this.tagList.find(item => item === this.inputValue.trim())) {
           this.isDuplicated = false
           if (this.maxQuantityTags !== this.tagList.length) {
-            this.tagList.push(this.inputValue.trim().toString())
+            this.tagList.push(this.inputValue.trim().substring(0, this.maxLength).toString())
           }
           this.inputValue = ''
         } else {
