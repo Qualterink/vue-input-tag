@@ -15,7 +15,8 @@
         title="Add tag"
         :placeholder="placeholder"
         v-model="inputValue"
-        @keyup.enter="addTag">
+        @keyup.enter="addTag"
+        @blur="addTag">
       <span class="visuallyhidden">Add new tag</span>
     </li>
   </ul>
@@ -50,25 +51,25 @@ export default {
 
 <style scoped>
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap; /* 1 */
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
 }
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-    white-space: inherit;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
 }
 .wrapper {
   font-size: 1rem;
@@ -80,6 +81,7 @@ export default {
   padding:0;
   font-size:1.2rem;
   box-sizing: border-box;
+  border-radius: .125rem;
 
   margin-top:100px;
   margin-left:10%;
@@ -89,12 +91,13 @@ export default {
   padding:.25rem;
 }
 .wrapper-tags {
-  border: 1px solid #3786ad;
+  border: 1px solid #64ccff;
   padding:.25rem .5rem;
-  background-color: #45c1ff;
+  background-color: #3bf;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: .125rem;
 }
 .tags {
   color:#fff;
@@ -129,12 +132,12 @@ export default {
 }
 .input-tag {
   border:1px solid transparent;
-  border-bottom:1px solid #333;
+  border-bottom:1px solid #3bf;
   padding:.25rem .5rem;
   font-size:1.2rem;
   font-weight: 300;
 }
 .input-tag:focus {
-  border:1px solid #333;
+  border:1px solid #3bf;
 }
 </style>
