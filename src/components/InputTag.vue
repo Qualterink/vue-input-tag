@@ -30,8 +30,7 @@ export default {
   },
   methods: {
     deleteTag (key) {
-      // eslint-disable-next-line
-      console.log(key)
+      this.tagList = this.tagList.filter((item, listKey) => listKey !== key)
     }
   }
 }
@@ -117,7 +116,8 @@ export default {
   transform: rotate(-45deg);
 }
 .input-tag {
-  border:1px solid transparent;
+  border:none;
+  border-bottom:1px solid #333;
   padding:.25rem .5rem;
   font-size:1.2rem;
   font-weight: 300;
