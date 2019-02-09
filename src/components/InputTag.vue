@@ -21,7 +21,7 @@
         <span class="visuallyhidden">Add new tag</span>
       </li>
     </ul>
-    <span class="notyfication notyfication--active">This tag already exists</span>
+    <span class="notyfication" :class="[isDuplicated ? 'notyfication--active' : '']">This tag already exists</span>
   </div>
 </template>
 
@@ -82,8 +82,9 @@ export default {
 }
 .wrapper {
   position: relative;
-  overflow: hidden;
   margin-top:100px;
+  width:80%;
+  margin-left:10%;
 }
 .wrapper-list {
   font-size: 1rem;
@@ -96,9 +97,6 @@ export default {
   font-size:1.2rem;
   box-sizing: border-box;
   border-radius: .125rem;
-
-  margin-left:10%;
-  width:80%;
 }
 .item {
   padding:.25rem;
@@ -157,14 +155,23 @@ export default {
   position: absolute;
   top:0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, 0);
   font-size: 1.5rem;
-  color: #ffa1a1;
-  /* opacity:0;
-  visibility: hidden; */
+  color: #ff7373;
+  background-color: #ffdada;
+  padding: .25rem;
+  width: 100%;
+  border: 1px solid #64ccff;
+  border-bottom: transparent;
+  transition: transform .2s ease-in, 
+              opacity .2s ease-in-out,
+              visibility .3s;
+  opacity:0;
+  visibility: hidden;
 }
-.notyfication--active {
-  transform: translateY(-1rem);
+.notyfication.notyfication--active {
+  transform: translate(-50%, -2rem);
   opacity:1;
+  visibility: visible;
 }
 </style>
