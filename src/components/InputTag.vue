@@ -15,7 +15,6 @@
           type="text"
           title="Add tag"
           :class="[maxQuantityTags === tagList.length ? 'disabled' : '']"
-          :disabled="maxQuantityTags === tagList.length"
           :maxlength="maxLength"
           :placeholder="placeholder"
           v-model="inputValue"
@@ -165,8 +164,7 @@ export default {
   border:1px solid #3bf;
 }
 .input-tag.disabled {
-  opacity: 0;
-  visibility: hidden;
+  display: none;
 }
 .notyfication {
   position: absolute;
