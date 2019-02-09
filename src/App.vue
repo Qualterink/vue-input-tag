@@ -1,6 +1,8 @@
 <template>
   <div id="app">
+    <h1>Vue input tag</h1>
     <InputTag
+      class="input-tag-component"
       :min-length="minLength"
       :max-length="maxLength"
       :max-quantity-tags="maxQuantityTags"
@@ -34,11 +36,20 @@ export default {
 }
 html {
   font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+}
+h1 {
+  margin-top:3rem;
 }
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.input-tag-component {
+  margin-top:3rem;
+  width:80%;
+  margin-left:10%;
 }
 </style>

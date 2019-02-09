@@ -94,9 +94,6 @@ export default {
 }
 .wrapper {
   position: relative;
-  margin-top:100px;
-  width:80%;
-  margin-left:10%;
 }
 .wrapper-list {
   font-size: 1rem;
