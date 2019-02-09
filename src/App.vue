@@ -2,6 +2,7 @@
   <div id="app">
     <InputTag
       :min-length="minLength"
+      :show-notyfication="showNotyfication"
       :placeholder="placeholder"/>
   </div>
 </template>
@@ -14,7 +15,8 @@ export default {
   data () {
     return {
       placeholder: "Add tag",
-      minLength: 1
+      minLength: 1,
+      showNotyfication: true
     }
   }
 }

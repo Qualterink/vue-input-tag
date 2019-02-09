@@ -21,7 +21,12 @@
         <span class="visuallyhidden">Add new tag</span>
       </li>
     </ul>
-    <span class="notyfication" :class="[isDuplicated ? 'notyfication--active' : '']">This tag already exists</span>
+    <span 
+      v-if="showNotyfication" 
+      class="notyfication" 
+      :class="[isDuplicated ? 'notyfication--active' : '']">
+        Tag already exists
+      </span>
   </div>
 </template>
 
@@ -30,7 +35,8 @@ export default {
   name: 'InputTag',
   props: {
     placeholder: { required: false, default: 'Add tag', type: String },
-    minLength: { required: false, default: 1, type: Number }
+    minLength: { required: false, default: 1, type: Number },
+    showNotyfication: { required:false, default: true, type: Boolean }
   },
   data () {
     return {
@@ -157,8 +163,8 @@ export default {
   left: 50%;
   transform: translate(-50%, 0);
   font-size: 1.5rem;
-  color: #ff7373;
-  background-color: #ffdada;
+  color: #333;
+  background-color: #b7e7ff;
   padding: .25rem;
   width: 100%;
   border: 1px solid #64ccff;
@@ -170,7 +176,7 @@ export default {
   visibility: hidden;
 }
 .notyfication.notyfication--active {
-  transform: translate(-50%, -2rem);
+  transform: translate(-50%, -2.125rem);
   opacity:1;
   visibility: visible;
 }
