@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <InputTag />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import InputTag from './components/InputTag'
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: { InputTag }
 }
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+}
+html {
+  font-size: 16px;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
