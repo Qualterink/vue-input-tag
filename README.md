@@ -1,5 +1,7 @@
 # input-tag
 
+![Vue input tag](demo.png)
+
 ## Use
 ```
 <InputTag
