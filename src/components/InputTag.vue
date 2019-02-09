@@ -1,25 +1,28 @@
 <template>
-  <ul class="wrapper">
-    <li class="item" v-for="(item, key) in tagList" :key="key">
-      <span class="wrapper-tags">
-        <span class="tags" >{{ item }}</span>
-        <button type="button" class="cross" title="Delete tag" @click="deleteTag(key)">
-          <span class="visuallyhidden">Delete tag</span>
-        </button>
-      </span>
-    </li>
-    <li class="item">
-      <input 
-        class="input-tag"
-        type="text"
-        title="Add tag"
-        :placeholder="placeholder"
-        v-model="inputValue"
-        @keyup.enter="addTag"
-        @blur="addTag">
-      <span class="visuallyhidden">Add new tag</span>
-    </li>
-  </ul>
+  <div class="wrapper">
+    <ul class="wrapper-list">
+      <li class="item" v-for="(item, key) in tagList" :key="key">
+        <span class="wrapper-tags">
+          <span class="tags" >{{ item }}</span>
+          <button type="button" class="cross" title="Delete tag" @click="deleteTag(key)">
+            <span class="visuallyhidden">Delete tag</span>
+          </button>
+        </span>
+      </li>
+      <li class="item">
+        <input 
+          class="input-tag"
+          type="text"
+          title="Add tag"
+          :placeholder="placeholder"
+          v-model="inputValue"
+          @keyup.enter="addTag"
+          @blur="addTag">
+        <span class="visuallyhidden">Add new tag</span>
+      </li>
+    </ul>
+    <span class="notyfication notyfication--active">This tag already exists</span>
+  </div>
 </template>
 
 <script>
@@ -32,7 +35,8 @@ export default {
   data () {
     return {
       tagList: ['lorem', 'lorem ipsum', 'lorem ipsum dolor?'],
-      inputValue: ''
+      inputValue: '',
+      isDuplicated: false
     }
   },
   methods: {
@@ -40,9 +44,14 @@ export default {
       this.tagList = this.tagList.filter((item, listKey) => listKey !== key)
     },
     addTag () {
-      if (this.inputValue.trim().length >= this.minLength && !this.tagList.find(item => item === this.inputValue.trim())) {
-        this.tagList.push(this.inputValue.trim().toString())
-        this.inputValue = ''
+      if (this.inputValue.trim().length >= this.minLength) {
+        if (!this.tagList.find(item => item === this.inputValue.trim())) {
+          this.isDuplicated = false
+          this.tagList.push(this.inputValue.trim().toString())
+          this.inputValue = ''
+        } else {
+          this.isDuplicated = true
+        }
       }
     }
   }
@@ -72,10 +81,15 @@ export default {
   white-space: inherit;
 }
 .wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top:100px;
+}
+.wrapper-list {
   font-size: 1rem;
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid #2f4550;
+  border: 1px solid #64ccff;
   list-style-type: none;
   margin:0;
   padding:0;
@@ -83,7 +97,6 @@ export default {
   box-sizing: border-box;
   border-radius: .125rem;
 
-  margin-top:100px;
   margin-left:10%;
   width:80%;
 }
@@ -139,5 +152,19 @@ export default {
 }
 .input-tag:focus {
   border:1px solid #3bf;
+}
+.notyfication {
+  position: absolute;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #ffa1a1;
+  /* opacity:0;
+  visibility: hidden; */
+}
+.notyfication--active {
+  transform: translateY(-1rem);
+  opacity:1;
 }
 </style>
