@@ -12,6 +12,7 @@
       <li class="item">
         <input 
           class="input-tag"
+          :class="[maxQuantityTags === tagList.length ? 'disabled' : '']"
           type="text"
           title="Add tag"
           :placeholder="placeholder"
@@ -36,11 +37,12 @@ export default {
   props: {
     placeholder: { required: false, default: 'Add tag', type: String },
     minLength: { required: false, default: 1, type: Number },
-    showNotyfication: { required:false, default: true, type: Boolean }
+    showNotyfication: { required:false, default: true, type: Boolean },
+    maxQuantityTags: { required:false, default: 15, type: Number },
   },
   data () {
     return {
-      tagList: ['lorem', 'lorem ipsum', 'lorem ipsum dolor?'],
+      tagList: [],
       inputValue: '',
       isDuplicated: false
     }
@@ -53,7 +55,9 @@ export default {
       if (this.inputValue.trim().length >= this.minLength) {
         if (!this.tagList.find(item => item === this.inputValue.trim())) {
           this.isDuplicated = false
-          this.tagList.push(this.inputValue.trim().toString())
+          if (this.maxQuantityTags !== this.tagList.length) {
+            this.tagList.push(this.inputValue.trim().toString())
+          }
           this.inputValue = ''
         } else {
           this.isDuplicated = true
@@ -156,6 +160,10 @@ export default {
 }
 .input-tag:focus {
   border:1px solid #3bf;
+}
+.input-tag.disabled {
+  opacity: 0;
+  visibility: hidden;
 }
 .notyfication {
   position: absolute;
